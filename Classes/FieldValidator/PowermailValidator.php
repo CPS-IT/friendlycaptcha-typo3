@@ -28,7 +28,7 @@ class PowermailValidator extends AbstractValidator
         if (!$friendlyCaptchaService->verify()) {
             $result->addError(
                 new Error(
-                    $this->getLanguageService()->sL('LLL:EXT:friendlycaptcha_official/Resources/Private/Language/locallang.xlf:message.invalid'),
+                    $this->translateErrorMessage('message.invalid', 'friendlycaptchaOfficial'),
                     1689157219
                 )
             );
@@ -77,10 +77,5 @@ class PowermailValidator extends AbstractValidator
     {
         $pluginVariables = GeneralUtility::_GPmerged('tx_powermail_pi1');
         return $pluginVariables['action'];
-    }
-
-    private function getLanguageService(): LanguageService
-    {
-        return $GLOBALS['LANG'];
     }
 }
